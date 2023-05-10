@@ -12,14 +12,19 @@ print("Bienvenido al generador de contrasenhas")
 nrletras = int(input("Cuantas letras tendra la contrasenha?\n"))
 nrsimb = int(input("Cuantos simbolos tendra la contrasenha?\n"))
 nrnumeros = int(input("Cuantos numeros tendra la contrasenha?\n"))
-password =""
+password =[]
 
-for i in range(1, nrletras +1):
-    password += random.choice(letras)
+for i in range(nrletras):
+    password.append(random.choice(letras))
     
-for i in range(1, nrsimb + 1):
-    password += random.choice(símbolos)
+for i in range(nrsimb):
+    password.append(random.choice(símbolos))
     
-for i in range(1, nrnumeros + 1):
-    password += random.choice(números)
-print(password)
+for i in range(nrnumeros):
+    password.append(random.choice(números))
+#Mezclar los numeros dentro de la lista
+random.shuffle(password)
+
+#Convertir lista a texto con funcion join
+setPassword ="".join(password)
+print(f"Tu nueva contrasenha es: {setPassword}")
